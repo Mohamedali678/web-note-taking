@@ -9,6 +9,7 @@
     <link  rel="stylesheet" href="style.css">
 
     <script src="https://code.iconify.design/iconify-icon/1.0.3/iconify-icon.min.js"></script>
+    
 </head>
 <body>
 
@@ -25,6 +26,8 @@
 
 
         <?php 
+                       //     $htmlData .= "<div class='box1' style='background-color: ".$data["color"]." ' > ";
+
 
             include "connection.php";
 
@@ -38,13 +41,18 @@
             if($checking == true){
 
                 while($data = $checking->fetch_assoc()){
-
                    
-                    $htmlData .= "<div class='box1' > ";
-                    $htmlData .= "<h1>" . $data["title"] . "</h1>";
-                    $htmlData .= "<p>" . $data["description"] . "</p>";
+                    $boxColor = $data["color"];
+
+                    $htmlData .= "<div class='box1' style='background-color: ".$boxColor."  ' >";
+                    
+                    $htmlData .= "<h1 style='color: white' >" . $data["title"] . "</h1>";
+                    $htmlData .= "<p style='color: white'>" . $data["description"] . "</p>";
                     $htmlData .= "<div class='icon'>";
-                    $htmlData .= "<a href=''> <iconify-icon icon='material-symbols:edit'></iconify-icon>  </a> ";
+
+                    $delete = "delete.php?"  . "&id=" . $data["ID"];
+
+                    $htmlData .= "<a href=' ".$delete." '> <iconify-icon icon='material-symbols:edit'></iconify-icon>  </a> ";
                     $htmlData .= "</div>";
                     $htmlData .= "</div>";
                   
